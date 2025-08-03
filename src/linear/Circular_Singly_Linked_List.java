@@ -45,7 +45,7 @@ class CirMethods{
 		}
 	    else {
 			CirNode temp = head;
-			for(int i=0; i<pos; i++) {
+			for(int i=0; i<pos-1; i++) {
 				temp = temp.next;
 			}
 			newNode.next = temp.next;
