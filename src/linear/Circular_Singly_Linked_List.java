@@ -38,7 +38,19 @@ class CirMethods{
 		}
 	}
 	public static void insertAtPos(int data,int pos){
-		CirNode node=new CirNode(data);
+		CirNode newNode = new CirNode(data);
+		if (pos == 0) {
+			insertAtbeg(data);
+			return;
+		}
+	    else {
+			CirNode temp = head;
+			for(int i=0; i<pos; i++) {
+				temp = temp.next;
+			}
+			newNode.next = temp.next;
+			temp.next = newNode;
+		}
 	}
 	public static void deleteAtBeg() {
 		CirNode temp=head;
@@ -52,10 +64,27 @@ class CirMethods{
 		}
 	}
 	public static void deleteAtEnd() {
-		
+		CirNode temp=head;
+        if(head==null && tail==null) {
+            System.out.print("The list is Empty");
+        }else {
+            while(temp.next.next!=head) {
+                temp=temp.next;
+            }temp.next=head;
+            
+        }
 	}
-	public static void deleteAtPos() {
-		
+	public static void deleteAtPos(int pos) {
+		if(pos==0) {
+			deleteAtBeg();
+		}
+		else {
+			CirNode temp=head;
+			for(int i=1;i<pos;i++) {
+				temp=temp.next;
+			}
+			temp.next=temp.next.next;
+		}
 	}
 	
 	public static void display() {
@@ -77,7 +106,7 @@ public class Circular_Singly_Linked_List extends CirMethods {
 		insertAtPos(45,2);
 		deleteAtBeg();
 		deleteAtEnd();
-		deleteAtPos();
+		deleteAtPos(2);
 		display();
 
 	}
